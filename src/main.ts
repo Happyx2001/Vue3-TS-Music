@@ -1,6 +1,9 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// 导入 Vant 组件库
+import Vant from 'vant'
+import 'vant/lib/index.css'
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App).use(store).use(router).use(Vant).mount('#app')
