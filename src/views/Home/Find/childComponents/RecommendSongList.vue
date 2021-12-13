@@ -8,7 +8,11 @@
     </div>
   </div>
   <div class="song-list">
-    <div class="list-item" v-for="item in recommendSongListData.data" :key="item.id">
+    <div
+        class="list-item"
+        v-for="item in recommendSongListData.data"
+        :key="item.id"
+        @click="goSongList(item.id)">
       <img :src="item.picUrl" :alt="item.name" class="song-img">
       <div class="song-name">
         {{ item.name }}
@@ -21,35 +25,44 @@
   </div>
 </template>
 
-<script>
-import {getRecommendSongList} from "@/api/HomeFind";
+<script lang="ts">
+import {getRecommendSongList} from "@/api/HomeApi/HomeFind";
 import {numberConversion} from "@/utils";
 import {defineComponent, onMounted, reactive} from "vue";
+// Vue3使用路由，需要先引入 useRoute、useRouter
+import {useRoute, useRouter} from 'vue-router'
 
 export default defineComponent({
   name: "RecommendSongList",
   setup() {
-
-    const recommendSongListData = reactive({
-      data: []
-    })
-
     onMounted(() => {
       getRecommendSongListData()
     })
 
+    // 获取推荐歌单数据
+    const recommendSongListData = reactive({
+      data: []
+    })
+
     const getRecommendSongListData = async () => {
-      const res = await getRecommendSongList()
+      const res: any = await getRecommendSongList()
       console.log(res, 'songs')
       // 数字单位转换
-      res.result.forEach(item => {
+      res.result.forEach((item: any) => {
         item.playCount = numberConversion(item.playCount)
       })
       recommendSongListData.data = res.result
     }
 
+    // 点击推荐歌单列表跳转到对应歌单
+    const router = useRouter()  // 相当于Vue2 = this.$router()
+
+    const goSongList = (id: number) => {
+      router.push({path: '/recommend/song-list', query: {id: id}})
+    }
     return {
-      recommendSongListData
+      recommendSongListData,
+      goSongList
     }
   }
 })
@@ -114,6 +127,7 @@ export default defineComponent({
       line-height: 0.24rem;
       color: #ffffff;
       z-index: 99;
+
       i {
         position: absolute;
         left: -0.24rem;

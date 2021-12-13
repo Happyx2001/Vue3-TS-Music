@@ -9,9 +9,9 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import {defineComponent, onMounted, reactive} from "vue";
-import {getIconList} from "@/api/HomeFind";
+import {getIconList} from "@/api/HomeApi/HomeFind";
 
 export default defineComponent({
   name: "IconList",
@@ -26,7 +26,7 @@ export default defineComponent({
     })
 
     const getIconListData = async () => {
-      const res = await getIconList()
+      const res: any = await getIconList()
       console.log(res, 'iconList')
       iconListData.data = res.data
     }

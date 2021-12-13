@@ -11,7 +11,7 @@
 import FindSwipe from "@/views/Home/Find/childComponents/FindSwipe.vue";
 import IconList from "@/views/Home/Find/childComponents/IconList.vue"
 import RecommendSongList from "@/views/Home/Find/childComponents/RecommendSongList.vue"
-import {getFind} from "@/api/HomeFind";
+import {getFind} from "@/api/HomeApi/HomeFind";
 import {defineComponent, onMounted} from "vue"
 
 export default defineComponent({

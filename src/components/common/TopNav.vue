@@ -1,7 +1,7 @@
 <template>
   <div class="top-nav">
     <div class="top-left">
-      <van-icon name="ellipsis" size="0.45rem"/>
+      <van-icon name="ellipsis" size="0.5rem"/>
     </div>
     <div class="top-center">
       <span class="nav-btn">我的</span>
@@ -10,7 +10,7 @@
       <span class="nav-btn">视频</span>
     </div>
     <div class="top-right">
-      <van-icon name="search" size="0.45rem"/>
+      <van-icon name="search" size="0.5rem"/>
     </div>
   </div>
 </template>

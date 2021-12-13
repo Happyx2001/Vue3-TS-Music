@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import {defineComponent, onMounted, reactive} from "vue";
-import {getBanner} from "@/api/HomeFind";
+import {getBanner} from "@/api/HomeApi/HomeFind";
 
 export default defineComponent({
   name: "FindSwipe",
@@ -23,7 +23,7 @@ export default defineComponent({
     })
 
     const getBannerData = async () => {
-      const res = await getBanner()
+      const res: any = await getBanner()
       console.log(res, 'bannerData')
       bannerData.data = res.banners
       console.log(bannerData.data)
